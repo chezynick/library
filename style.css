@@ -1,0 +1,33 @@
+/*stylesheet reset*/
+html, body, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* style sheet begins here */
+body {margin:0; width:100%; height:100%; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI'; background-color: rgb(196, 194, 193);}
+#shelf {width:100%;  height:auto; display:grid; grid-template-columns: repeat(5, 1fr); 
+     flex-wrap: wrap; justify-content: space-evenly; background-color:rgb(63, 128, 133);}
+.book {width:100px; height:100px; background-color: rgb(28, 39, 49); color:rgb(190, 185, 185); margin-top:10px;
+	display:flex; align-items: center;justify-content: center;}
+.bookHolder {width:120px; height:140px; background-color: black;margin: 30px; display:flex;
+	 justify-content: space-around; align-items: center; text-align: center; flex-direction:row; flex-flow: wrap; color:rgb(190, 185, 185)}	 
+#details { width:300px; height:auto; padding:20px;background-color: rgb(148, 175, 174); display:flex; flex-direction: column;  text-align: center;
+	border: 3px black double; position: fixed ; margin-left: 35%; top:40px; display:none;z-index:1;}
+.delButton {background-color:rgb(28, 39, 49);border:none; color:rgb(190, 185, 185);margin-bottom:3px;}
+p {padding-top:10px;}
