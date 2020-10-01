@@ -40,10 +40,7 @@ function book (title, author, genre, haveread){
         //attach box to shelf
         shelf.appendChild(box); 
 
-        //restart delete function
-        deleteBut();
-        details();
-        readBut();
+
 };
 };
 
@@ -69,17 +66,15 @@ function book (title, author, genre, haveread){
     
        let createdBook =  new book(a, b, c, d);
        myLibrary.push(createdBook);
-        
-        //restart all of the functions
-        addbook();
-        details();
-        readBut();
+       addbook();
+       details();
+       readBut();
+       deleteBut();
+
         };
 
-                //call addbook function
-        addbook();
-        details();
-        readBut();
+
+
 
 
     
@@ -112,14 +107,13 @@ function details(){
       function closebox(){
         resultBox.style.display = 'none';          
       };
-      details();
-      readBut();
+
 };
 };   
 };
 
 //delete button function
-      deleteBut();
+      
       function deleteBut(){
     let deleteButton = document.querySelectorAll('.delButton');
 //loop through delete buttons to find one that matches 
@@ -127,23 +121,23 @@ function details(){
         deleteButton[i].addEventListener('click', delwhich)
 function delwhich(){
    myLibrary = myLibrary.filter(name => name.title !== deleteButton[i].value);
-//call addBook function to rebuild screen without deleted item
-    addbook();
-    deleteBut();
-    details();
+addbook();
+details();
+readBut();
       };
     };
 };
 
 //read button function
-readBut();
+
 function readBut(){
 let readButton = document.querySelectorAll('.tickbox');
+
 //loop through delete buttons to find one that matches 
 for(let i=0;i < readButton.length;i++){
   readButton[i].addEventListener('click', isread)
 function isread(){
-    console.log(readButton[i].value)
+
     if(readButton[i].innerText == 'N'){
         readButton[i].innerText = 'Y'
     } else {
@@ -154,4 +148,9 @@ function isread(){
 }
 };
 };
+                //call all functions
+        addbook();
+        details();
+        readBut();
+        deleteBut();
    
