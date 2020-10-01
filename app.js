@@ -1,5 +1,5 @@
 //create myLibrary array
-let myLibrary = [];
+         myLibrary = [];
  let shelf = document.getElementById('shelf');
  //function for creating book- constructor
 function book (title, author, genre, haveread){
@@ -17,7 +17,7 @@ function book (title, author, genre, haveread){
         let box = document.createElement('div');
         let innerbox = document.createElement('div');
         let delButton = document.createElement('button');
-        let readButton = document.createElement('button');
+        let readButton = document.createElement('input');
         let buttonLabel = document.createElement('label');
         //add class to box and button
         delButton.classList.add('delButton')
@@ -30,7 +30,7 @@ function book (title, author, genre, haveread){
         innerbox.value = myLibrary[i];
         delButton.value = myLibrary[i].title;
         buttonLabel.innerText = 'Read?';
-        readButton.innerText = 'N'
+        readButton.type = 'checkbox';
         readButton.value = myLibrary[i].title;
         //attach delButton to div
         box.appendChild(innerbox);
@@ -46,38 +46,67 @@ function book (title, author, genre, haveread){
 
 
 //create a few books
-    const book1 =  new book('HTML for Dummies', 'Andy Harris', 'programming', true);
+    const book1 =  new book('HTML for Dummies', 'Andy Harris', 'programming', false);
     myLibrary.push(book1);
     const book2 = new book('The Travel Book', 'Lonely Planet', 'Travel', false);
     myLibrary.push(book2);
-    const book3 = new book('1001 Walks of Britain','The AA','reference',true);
+    const book3 = new book('1001 Walks of Britain','The AA','reference',false);
     myLibrary.push(book3);
-
+    addbook();
     //new book button 
     let add = document.getElementById('newBookButton');
+    let title = document.getElementById('textTitle');
+    let author = document.getElementById('textAuthor');
+    let genre = document.getElementById('textGenre');
     add.addEventListener('click', addBookToLibrary);
     //new book form
     function addBookToLibrary(){
-        let a = prompt('What is the name of the book?');
-        let b = prompt('What is the Author name?');
-        let c = prompt('what type of book is it?');
-        let d = true;
- 
-    
-       let createdBook =  new book(a, b, c, d);
+    let form = document.getElementById('newForm');
+    form.style.display = 'flex'
+    //cancel button function
+    let cancel = document.getElementById('cancel');
+    cancel.addEventListener('click', cancelBook)
+    function cancelBook(){
+        title.value = '';
+        author.value = '';
+        genre.value = ''; 
+        form.style.display = 'none';
+        
+    }
+    //reset buttonfunction
+    let reset = document.getElementById('reset');
+    reset.addEventListener('click', resetBut)
+    function resetBut(){
+        title.value = '';
+        author.value = '';
+        genre.value = ''; 
+    }
+
+    let newBook = document.getElementById('submit');
+    newBook.addEventListener('click', addNewBook);
+        function addNewBook(){
+            //get values from form
+
+            let a = title.value;
+            let b = author.value;
+            let c = genre.value;
+            let d = false;
+            if(a === ''||b===''||c===''){
+                form.style.display = 'none';   
+            } else {
+            let createdBook =  new book(a, b, c, d);
        myLibrary.push(createdBook);
+       title.value = '';
+       author.value = '';
+       genre.value = '';             
        addbook();
        details();
        readBut();
        deleteBut();
+            };
+    };
+};
 
-        };
-
-
-
-
-
-    
 //expand details for each book
 function details(){
     let bookSelect = document.querySelectorAll('.book')
@@ -91,7 +120,7 @@ function details(){
         resultBox.style.display = 'block';
     let readNotRead = '';
      
-    if(result.haveread === true){
+    if(myLibrary[i].haveread === true){
         readNotRead = 'Y'
     }else {
         readNotRead = 'N'
@@ -120,10 +149,12 @@ function details(){
     for(let i=0;i < deleteButton.length;i++){
         deleteButton[i].addEventListener('click', delwhich)
 function delwhich(){
+  
    myLibrary = myLibrary.filter(name => name.title !== deleteButton[i].value);
 addbook();
 details();
 readBut();
+deleteBut();
       };
     };
 };
@@ -137,20 +168,62 @@ let readButton = document.querySelectorAll('.tickbox');
 for(let i=0;i < readButton.length;i++){
   readButton[i].addEventListener('click', isread)
 function isread(){
-
-    if(readButton[i].innerText == 'N'){
-        readButton[i].innerText = 'Y'
-    } else {
-        readButton[i].innerText = 'N'
-    }
-
-    
+    if(readButton[i].checked === true){
+            myLibrary[i].haveread = true;   
+} else{
+            myLibrary[i].haveread = false;
+};
+};
+};
+};
+// add sort button functionality -by title
+    let sortTitle = document.getElementById('title');
+        sortTitle.addEventListener('click', sorty);
+        function sorty(){
+            myLibrary = myLibrary.sort((a,b) => a.title > b.title ? 1 : -1);
+            addbook();
+            details();
+            readBut();
+            deleteBut();
+        }
+//sort by author name
+        let sortAuthor = document.getElementById('author');
+        sortAuthor.addEventListener('click', sortName);
+        function sortName(){
+            myLibrary = myLibrary.sort((a,b) => a.author > b.author ? 1 : -1);
+            addbook();
+            details();
+            readBut();
+            deleteBut();
+        }
+//sort by genre
+        let sortGenre = document.getElementById('genre');
+        sortGenre.addEventListener('click', sortyGenre);
+        function sortyGenre(){
+            myLibrary = myLibrary.sort((a,b) => a.genre > b.genre ? 1 : -1);
+            addbook();
+            details();
+            readBut();
+            deleteBut();
+        }
+//sort by books read
+        let sortRead = document.getElementById('readFirst');
+        sortRead.addEventListener('click', sortyRead);
+        function sortyRead(){
+             myLibrary = myLibrary.sort((a,b) => a.haveread > b.haveread ? 1 : -1);
+    addbook();
+    details();
+    readBut();
+    deleteBut();
 }
-};
-};
-                //call all functions
-        addbook();
+
+                //call all functions    
         details();
         readBut();
         deleteBut();
+
+
+
+        
+
    

@@ -8,7 +8,26 @@
 </header>
 <body>
 <div id = 'shelf'></div>
+<div id = 'buttonBar'>
 <input type='button' value='+ Add' id='newBookButton'/>
+<input class='sortButtons' type='button' value='Sort by Title' id='title'/>
+<input class='sortButtons' type='button' value='Sort by Author' id='author'/>
+<input class='sortButtons' type='button' value='Sort by Genre' id='genre'/>
+
+</div>
+<form id = 'newForm'>   
+<label>Book Title</label>
+<input class ='textboxes' type='textarea' name='title' id='textTitle'/>
+<label>Author's Name</label>
+<input class ='textboxes' type='textarea' label='author' id='textAuthor'/>
+<label>Genre?</label>
+<input class ='textboxes' type='textarea' label='Genre' id='textGenre'/>
+<div class = 'buttonHolder'>
+<input class = 'formButton' type='button' id='cancel' value='Cancel'/>
+<input class = 'formButton'  type='button' id='reset' value='reset'/>
+<input class = 'formButton'  type='button' id='submit' value='add'/>
+</div>
+</form>
 <div id ='details'>
     <h3 id ='bookTitle'></h3>
     <p id ='authorName'></p>
