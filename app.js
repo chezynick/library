@@ -206,16 +206,7 @@ function isread(){
             readBut();
             deleteBut();
         }
-//sort by books read
-        let sortRead = document.getElementById('readFirst');
-        sortRead.addEventListener('click', sortyRead);
-        function sortyRead(){
-             myLibrary = myLibrary.sort((a,b) => a.haveread > b.haveread ? 1 : -1);
-    addbook();
-    details();
-    readBut();
-    deleteBut();
-}
+
 
                 //call all functions    
         details();
