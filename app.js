@@ -32,6 +32,9 @@ function book (title, author, genre, haveread){
         buttonLabel.innerText = 'Read?';
         readButton.type = 'checkbox';
         readButton.value = myLibrary[i].title;
+        if(myLibrary[i].haveread===true){
+            readButton.checked = true;
+        }
         //attach delButton to div
         box.appendChild(innerbox);
         box.appendChild(delButton);
@@ -50,7 +53,7 @@ function book (title, author, genre, haveread){
     myLibrary.push(book1);
     const book2 = new book('The Travel Book', 'Lonely Planet', 'Travel', false);
     myLibrary.push(book2);
-    const book3 = new book('1001 Walks of Britain','The AA','reference',false);
+    const book3 = new book('1001 Walks of Britain','The AA','reference',true);
     myLibrary.push(book3);
     addbook();
     //new book button 
@@ -206,7 +209,17 @@ function isread(){
             readBut();
             deleteBut();
         }
+//sort by read or not
+        let readSort = document.getElementById('readBook');
+        readSort.addEventListener('click', sortyRead);
+        function sortyRead(){
 
+            myLibrary = myLibrary.sort((a,b) => a.haveread === b.haveread? 0 : a ? -1 : 1);
+            addbook();
+            details();
+            readBut();
+            deleteBut();
+        }
 
                 //call all functions    
         details();
