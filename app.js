@@ -43,7 +43,6 @@ function book (title, author, genre, haveread){
         //attach box to shelf
         shelf.appendChild(box); 
 
-
 };
 };
 
@@ -183,6 +182,7 @@ function isread(){
     let sortTitle = document.getElementById('title');
         sortTitle.addEventListener('click', sorty);
         function sorty(){
+            
             myLibrary = myLibrary.sort((a,b) => a.title > b.title ? 1 : -1);
             addbook();
             details();
@@ -203,6 +203,7 @@ function isread(){
         let sortGenre = document.getElementById('genre');
         sortGenre.addEventListener('click', sortyGenre);
         function sortyGenre(){
+            
             myLibrary = myLibrary.sort((a,b) => a.genre > b.genre ? 1 : -1);
             addbook();
             details();
