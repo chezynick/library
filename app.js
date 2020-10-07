@@ -2,12 +2,13 @@
          myLibrary = [];
  let shelf = document.getElementById('shelf');
  //function for creating book- constructor
-function book (title, author, genre, haveread){
+class book {
+    constructor (title, author, genre, haveread){
     this.title = title;
     this.author = author;
     this.genre = genre;
     this.haveread = haveread;
-    
+    }; 
 };
     function addbook(){
          shelf.innerHTML = '';
